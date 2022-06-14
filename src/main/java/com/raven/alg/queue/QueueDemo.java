@@ -6,16 +6,6 @@ package com.raven.alg.queue;
  */
 public class QueueDemo {
     public static void main(String[] args) {
-//        QueueArray queueArray = new QueueArray(5);
-//        queueArray.add(1);
-//        queueArray.add(2);
-//        queueArray.add(3);
-//        queueArray.add(4);
-//        queueArray.add(5);
-//
-//        for (int i = 0; i < 5; i++) {
-//            System.out.printf("%d\t", queueArray.get());
-//        }
         circleQueueArray();
     }
 
