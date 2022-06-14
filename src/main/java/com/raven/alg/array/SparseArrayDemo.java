@@ -1,7 +1,9 @@
 package com.raven.alg.array;
 
 
-
+/**
+ * 稀疏数组
+ */
 public class SparseArrayDemo {
     public static void main(String[] args) {
         int[][] array = new int[5][5];
