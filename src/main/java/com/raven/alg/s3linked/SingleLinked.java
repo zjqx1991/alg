@@ -36,9 +36,10 @@ public class SingleLinked {
      * 输出链表数据
      */
     public void list() {
-        while (null != this.head.next) {
-            this.head = this.head.next;
-            System.out.printf("%s\t", this.head);
+        SingleLinked head = this.head;
+        while (null != head.next) {
+            SingleLinked temp = head.next;
+            System.out.printf("%s\t", temp);
         }
     }
 

@@ -36,12 +36,86 @@ public class SingleLinkedOrder {
 
 
     /**
+     * 删除数据
+     */
+    public void delete(Integer index) {
+        SingleLinkedOrder head = this.head;
+        while (null != head.next) {
+            SingleLinkedOrder next1 = head.next;
+            SingleLinkedOrder next2 = head.next.next;
+            // 取出当前节点
+            if (null != next1 && next1.sort == index) {
+                if (null == next2) {
+                    head.next = next2;
+                    return;
+                }
+                head.next.name = head.next.next.name;
+                head.next.sort = head.next.next.sort;
+                return;
+            }
+            head = head.next;
+        }
+    }
+
+
+    /**
+     * 编辑数据
+     */
+    public void edit(SingleLinkedOrder item) {
+        SingleLinkedOrder node = this.getNode(item);
+        if (node == null) {
+            throw new RuntimeException("编辑数据错误：" + item.toString());
+        }
+        node.name = item.name;
+    }
+
+
+    /**
+     * 获取指定数据
+     *
+     * @param index
+     * @return
+     */
+    public SingleLinkedOrder getNode(Integer index) {
+        SingleLinkedOrder head = this.head;
+        while (null != head.next) {
+            // 取出当前节点
+            if (head.next.sort == index) {
+                return head.next;
+            }
+            head = head.next;
+        }
+        return null;
+    }
+
+    /**
+     * 获取指定数据
+     *
+     * @param item
+     * @return
+     */
+    private SingleLinkedOrder getNode(SingleLinkedOrder item) {
+        SingleLinkedOrder head = this.head;
+        while (null != head.next) {
+            // 取出当前节点
+            SingleLinkedOrder temp = head.next;
+            if (null != temp && temp.sort == item.sort) {
+                return temp;
+            }
+            head = temp;
+        }
+        return null;
+    }
+
+    /**
      * 输出链表数据
      */
     public void list() {
-        while (null != this.head.next) {
-            this.head = this.head.next;
-            System.out.printf("%s\t", this.head);
+        SingleLinkedOrder head = this.head;
+        while (null != head.next) {
+            SingleLinkedOrder temp = head.next;
+            System.out.printf("%s\t", temp);
+            head = temp;
         }
     }
 

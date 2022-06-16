@@ -1,6 +1,8 @@
 package com.raven.alg.s3linked;
 
 
+import java.util.Arrays;
+
 public class LinkedDemo {
     public static void main(String[] args) {
 
@@ -11,12 +13,26 @@ public class LinkedDemo {
         SingleLinkedOrder singleLinked3 = new SingleLinkedOrder(3, "第-3");
         SingleLinkedOrder singleLinked4 = new SingleLinkedOrder(4, "第-4");
 
+
         singleLinked.add(singleLinked3);
         singleLinked.add(singleLinked2);
         singleLinked.add(singleLinked1);
         singleLinked.add(singleLinked4);
 
         singleLinked.list();
+
+        System.out.println("===== 修改 ====");
+        SingleLinkedOrder singleLinked5 = new SingleLinkedOrder(4, "第-5");
+        singleLinked.edit(singleLinked5);
+        singleLinked.list();
+
+        System.out.println("===== 删除 ====");
+        singleLinked.delete(4);
+        singleLinked.list();
+
+        System.out.println("===== 获取-4 ====" + singleLinked.getNode(4));
+        System.out.println("===== 获取-1 ====" + singleLinked.getNode(1));
+
     }
 
     /**
