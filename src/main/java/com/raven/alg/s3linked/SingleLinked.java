@@ -1,4 +1,4 @@
-package com.raven.alg.linked;
+package com.raven.alg.s3linked;
 
 /**
  * 无序单向链表

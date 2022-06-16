@@ -1,4 +1,4 @@
-package com.raven.alg.array;
+package com.raven.alg.s1array;
 
 
 /**

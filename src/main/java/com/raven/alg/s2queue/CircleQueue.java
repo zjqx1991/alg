@@ -1,4 +1,4 @@
-package com.raven.alg.queue;
+package com.raven.alg.s2queue;
 
 /**
  * 数组构成环形队列
