@@ -150,24 +150,4 @@ public class SingleLinked extends Linked {
         }
     }
 
-
-    /**
-     * 输出列表
-     */
-    public void list() {
-        if (null == this.head || null == this.head.next) {
-            System.out.println("列表为空！！！");
-        }
-        // 获取列表的头节点
-        Linked head = this.head;
-        while (null != head.next) {
-            System.out.println(head.next);
-            head = head.next;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "[ sort=" + sort + ", name='" + name + ", shortName=" + shortName + " ]";
-    }
 }

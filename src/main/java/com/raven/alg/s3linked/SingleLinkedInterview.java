@@ -5,6 +5,54 @@ package com.raven.alg.s3linked;
  */
 public class SingleLinkedInterview {
 
+
+    /**
+     * 反转单向链表(不破坏原链表)
+     */
+    public static Linked reserveLinked(Linked linked) {
+        Linked reserveLinked = new Linked();
+        Linked head = linked;
+        while (true) {
+            if (null == head) {
+                break;
+            }
+            Linked next = head.next;
+            if (reserveLinked.head == null) {
+                reserveLinked.head = head;
+            } else {
+                head.next = reserveLinked.next;
+                reserveLinked.next = head;
+            }
+            head = next;
+        }
+        return reserveLinked;
+    }
+
+
+    /**
+     * 反转单向链表(破坏原链表)
+     */
+    public static Linked reserveLinked2(Linked linked) {
+        Linked newHead = new Linked();
+        Linked head = linked;
+        Linked next = null;
+        while (true) {
+            if (null == head) {
+                break;
+            }
+            // 记录head 的下一个值
+            next = head.next;
+            if (head.sort > 0) {
+                head.next = newHead.next;
+                newHead.next = head;
+            }
+            head = next;
+        }
+        linked.next = newHead.next;
+        return linked;
+    }
+
+
     /**
      * 查找单向链表中的倒数第 k 个节点
      */

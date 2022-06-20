@@ -25,35 +25,51 @@ public class LinkedDemo {
 
         singleLinked.list();
 
-        System.out.println("获取倒数第5个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 5));
-        System.out.println("获取倒数第4个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 4));
-        System.out.println("获取倒数第3个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 3));
-        System.out.println("获取倒数第2个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 2));
-        System.out.println("获取倒数第1个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 1));
+//        System.out.println("反转链表");
+//        Linked linked = SingleLinkedInterview.reserveLinked(singleLinked.head);
+//        while (true) {
+//            if (linked == null) {
+//                break;
+//            }
+//            if (linked.sort != null)
+//                System.out.println(linked);
+//            linked = linked.next;
+//        }
 
-        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
-        System.out.println("删除数据=====");
-        singleLinked.delete(1);
-        singleLinked.delete(5);
+        System.out.println("反转链表2");
+        SingleLinkedInterview.reserveLinked2(singleLinked.head);
         singleLinked.list();
-        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
 
-        System.out.println("更新数据=====");
-        SingleLinkedOrder singleLinked5 = new SingleLinkedOrder(2, "新手第一英雄", "矮子");
-        singleLinked.update(singleLinked5);
-        singleLinked.list();
-        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
-
-        System.out.println("查询数据=====");
-        singleLinked.get(1);
-        singleLinked.get(3);
-        singleLinked.get(5);
-
-        System.out.println("获取倒数第5个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 5));
-        System.out.println("获取倒数第4个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 4));
-        System.out.println("获取倒数第3个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 3));
-        System.out.println("获取倒数第2个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 2));
-        System.out.println("获取倒数第1个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 1));
+//
+//        System.out.println("获取倒数第5个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 5));
+//        System.out.println("获取倒数第4个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 4));
+//        System.out.println("获取倒数第3个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 3));
+//        System.out.println("获取倒数第2个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 2));
+//        System.out.println("获取倒数第1个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 1));
+//
+//        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
+//        System.out.println("删除数据=====");
+//        singleLinked.delete(1);
+//        singleLinked.delete(5);
+//        singleLinked.list();
+//        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
+//
+//        System.out.println("更新数据=====");
+//        SingleLinkedOrder singleLinked5 = new SingleLinkedOrder(2, "新手第一英雄", "矮子");
+//        singleLinked.update(singleLinked5);
+//        singleLinked.list();
+//        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
+//
+//        System.out.println("查询数据=====");
+//        singleLinked.get(1);
+//        singleLinked.get(3);
+//        singleLinked.get(5);
+//
+//        System.out.println("获取倒数第5个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 5));
+//        System.out.println("获取倒数第4个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 4));
+//        System.out.println("获取倒数第3个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 3));
+//        System.out.println("获取倒数第2个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 2));
+//        System.out.println("获取倒数第1个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 1));
     }
 
     /**
