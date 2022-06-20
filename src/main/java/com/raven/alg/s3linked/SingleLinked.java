@@ -4,17 +4,7 @@ package com.raven.alg.s3linked;
 /**
  * 无序单向链表
  */
-public class SingleLinked {
-    // 链表顺序
-    Integer sort;
-    // 节点数据
-    String name;
-    // 节点数据
-    String shortName;
-    // 链表头节点
-    private SingleLinked head;
-    // 链表下一个节点
-    private SingleLinked next;
+public class SingleLinked extends Linked {
 
 
     public SingleLinked() {
@@ -29,17 +19,17 @@ public class SingleLinked {
     /**
      * 新增节点到链表的最后
      */
-    public void add(SingleLinked item) {
+    public void add(Linked item) {
         if (null == this.head) {
             this.head = new SingleLinked(0, "head", "head");
         }
         // 获取列表的头节点
-        SingleLinked head = this.head;
+        Linked head = this.head;
         while (null != head.next) {
             head = head.next;
         }
         // 获取最后一个有效节点的next（null）
-        SingleLinked nextNull = head.next;
+        Linked nextNull = head.next;
         head.next = item;
         item.next = nextNull;
     }
@@ -53,7 +43,7 @@ public class SingleLinked {
             this.head = new SingleLinked(0, "head", "head");
         }
         // 获取列表的头节点
-        SingleLinked head = this.head;
+        Linked head = this.head;
         while (true) {
             if (null == head.next) {
                 break;
@@ -61,7 +51,7 @@ public class SingleLinked {
             head = head.next;
         }
         // 获取最后一个有效节点的next（null）
-        SingleLinked nextNull = head.next;
+        Linked nextNull = head.next;
         head.next = item;
         item.next = nextNull;
     }
@@ -73,7 +63,7 @@ public class SingleLinked {
      * @param sort
      */
     public void delete(Integer sort) {
-        SingleLinked head = this.head;
+        Linked head = this.head;
         Boolean check = false;
         if (null == head || null == head.next) {
             System.out.println("列表为空！！！");
@@ -101,8 +91,8 @@ public class SingleLinked {
     /**
      * 修改列表数据
      */
-    public void update(SingleLinked item) {
-        SingleLinked head = this.head;
+    public void update(Linked item) {
+        Linked head = this.head;
         Boolean check = false;
         if (null == head || null == head.next) {
             System.out.println("列表为空！！！");
@@ -134,7 +124,7 @@ public class SingleLinked {
      * 获取数据
      */
     public void get(Integer sort) {
-        SingleLinked head = this.head;
+        Linked head = this.head;
         Boolean check = false;
         if (null == head || null == head.next) {
             System.out.println("列表为空！！！");
@@ -169,7 +159,7 @@ public class SingleLinked {
             System.out.println("列表为空！！！");
         }
         // 获取列表的头节点
-        SingleLinked head = this.head;
+        Linked head = this.head;
         while (null != head.next) {
             System.out.println(head.next);
             head = head.next;

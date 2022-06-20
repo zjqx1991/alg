@@ -24,15 +24,19 @@ public class LinkedDemo {
         singleLinked.add(singleLinked4);
 
         singleLinked.list();
+
+        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
         System.out.println("删除数据=====");
         singleLinked.delete(1);
         singleLinked.delete(5);
         singleLinked.list();
+        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
 
         System.out.println("更新数据=====");
         SingleLinkedOrder singleLinked5 = new SingleLinkedOrder(2, "新手第一英雄", "矮子");
         singleLinked.update(singleLinked5);
         singleLinked.list();
+        System.out.println("链表有效个数=====" + SingleLinkedInterview.getSingleLinkedSize(singleLinked.head));
 
         System.out.println("查询数据=====");
         singleLinked.get(1);
