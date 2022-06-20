@@ -6,6 +6,22 @@ package com.raven.alg.s3linked;
 public class SingleLinkedInterview {
 
     /**
+     * 查找单向链表中的倒数第 k 个节点
+     */
+    public static Linked getLinkedByReverseIndex(Linked linked, Integer index) {
+        // 获取有效链表个数
+        Integer size = getSingleLinkedSize(linked);
+        if (size < index) {
+            return null;
+        }
+        Linked first = linked.next;
+        for (Integer i = 0; i < size - index; i++) {
+            first = first.next;
+        }
+        return first;
+    }
+
+    /**
      * 单向链表中有效节点个数
      */
     public static Integer getSingleLinkedSize(Linked linked) {
