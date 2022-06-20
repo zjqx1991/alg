@@ -4,141 +4,165 @@ package com.raven.alg.s3linked;
  * 有序序单向链表
  */
 public class SingleLinkedOrder {
-    // 链表数据
+    // 链表顺序
     Integer sort;
-    // 名称
+    // 节点数据
     String name;
-    // 链表数据
+    // 节点数据
+    String shortName;
+    // 链表头节点
     private SingleLinkedOrder head;
-    // 链表数据
+    // 链表下一个节点
     private SingleLinkedOrder next;
 
-    public SingleLinkedOrder() {
-    }
-
-    public SingleLinkedOrder(Integer sort, String name) {
+    public SingleLinkedOrder(Integer sort, String name, String shortName) {
         this.sort = sort;
         this.name = name;
+        this.shortName = shortName;
     }
 
     /**
-     * 添加数据
+     * 新增节点
      */
     public void add(SingleLinkedOrder item) {
-        if (this.head == null) {
-            this.head = new SingleLinkedOrder();
+        if (null == this.head) {
+            this.head = new SingleLinkedOrder(0, "head", "head");
         }
-        SingleLinkedOrder node = this.getLastNode(item);
-        SingleLinkedOrder lastNext = node.next;
-        node.next = item;
-        item.next = lastNext;
-    }
-
-
-    /**
-     * 删除数据
-     */
-    public void delete(Integer index) {
+        // 寻找sort 大于item 的 SingleLinkedOrder
         SingleLinkedOrder head = this.head;
-        while (null != head.next) {
-            if (null != head.next && head.next.sort == index) {
-                head.next = head.next.next;
-                return;
+        Boolean check = false;
+        while (true) {
+            // 第一个有效节点
+            if (null == head.next) {
+                check = true;
+                break;
+            }
+            if (head.next.sort > item.sort) {
+                check = true;
+                break;
             }
             head = head.next;
         }
-    }
-
-
-    /**
-     * 编辑数据
-     */
-    public void edit(SingleLinkedOrder item) {
-        SingleLinkedOrder node = this.getNode(item);
-        if (node == null) {
-            throw new RuntimeException("编辑数据错误：" + item.toString());
+        if (check) {
+            SingleLinkedOrder next = head.next;
+            head.next = item;
+            item.next = next;
         }
-        node.name = item.name;
     }
 
 
     /**
-     * 获取指定数据
+     * 删除指定节点
      *
-     * @param index
-     * @return
+     * @param sort
      */
-    public SingleLinkedOrder getNode(Integer index) {
+    public void delete(Integer sort) {
+        if (null == this.head || null == this.head.next) {
+            System.out.println("列表为空！！！");
+            return;
+        }
         SingleLinkedOrder head = this.head;
-        while (null != head.next) {
-            // 取出当前节点
-            if (head.next.sort == index) {
-                return head.next;
+        Boolean check = false;
+        while (true) {
+            // 为空
+            if (null == head.next) {
+                break;
+            }
+            // 找到
+            if (head.next.sort == sort) {
+                check = true;
+                break;
             }
             head = head.next;
         }
-        return null;
-    }
-
-    /**
-     * 获取指定数据
-     *
-     * @param item
-     * @return
-     */
-    private SingleLinkedOrder getNode(SingleLinkedOrder item) {
-        SingleLinkedOrder head = this.head;
-        while (null != head.next) {
-            // 取出当前节点
-            SingleLinkedOrder temp = head.next;
-            if (null != temp && temp.sort == item.sort) {
-                return temp;
-            }
-            head = temp;
+        if (check) {
+            head.next = head.next.next;
+        } else {
+            System.out.println("未找到 " + sort + " 该节点数据！！！");
         }
-        return null;
+    }
+
+
+    /**
+     * 修改列表数据
+     */
+    public void update(SingleLinkedOrder item) {
+        if (null == this.head || null == this.head.next) {
+            System.out.println("列表为空！！！");
+            return;
+        }
+        // 有效节点
+        SingleLinkedOrder first = this.head.next;
+        Boolean check = false;
+
+        while (true) {
+            // 找不到
+            if (null == first) {
+                break;
+            }
+            if (first.sort == item.sort) {
+                check = true;
+                break;
+            }
+            first = first.next;
+        }
+
+        if (check) {
+            first.name = item.name;
+            first.shortName = item.shortName;
+        } else {
+            System.out.println("未找到 " + sort + " 该节点数据！！！");
+        }
+    }
+
+
+    /**
+     * 获取数据
+     */
+    public void get(Integer sort) {
+        if (null == this.head || null == this.head.next) {
+            System.out.println("列表为空！！！");
+            return;
+        }
+        SingleLinkedOrder head = this.head;
+        Boolean check = false;
+        while (true) {
+            // 没有找到
+            if (null == head) {
+                break;
+            }
+            // 找到了
+            if (head.sort == sort) {
+                check = true;
+                break;
+            }
+            head = head.next;
+        }
+
+        if (check) {
+            System.out.println(sort + "数据为：" + head);
+        } else {
+            System.out.println("无法找到" + sort + "！！！");
+        }
     }
 
     /**
-     * 输出链表数据
+     * 输出列表
      */
     public void list() {
+        if (null == this.head || null == this.head.next) {
+            System.out.println("列表为空！！！");
+        }
+        // 获取列表的头节点
         SingleLinkedOrder head = this.head;
         while (null != head.next) {
-            SingleLinkedOrder temp = head.next;
-            System.out.printf("%s\t", temp);
-            head = temp;
+            System.out.println(head.next);
+            head = head.next;
         }
     }
-
-    /**
-     * 获取（新增节点）的前一个节点
-     */
-    private SingleLinkedOrder getLastNode(SingleLinkedOrder node) {
-        SingleLinkedOrder lastNode = this.head;
-        while (null != lastNode.next) {
-            // 下一个节点
-            SingleLinkedOrder temp = lastNode.next;
-            // 判断 temp 节点 与 node节点的大小
-            if (temp.sort > node.sort) {
-                return lastNode;
-            }
-            lastNode = lastNode.next;
-        }
-        System.out.println("最后一个节点：" + lastNode);
-        return lastNode;
-    }
-
-    /**
-     * 链表为空
-     */
-    private Boolean isEmpty() {
-        return true;
-    }
-
 
     @Override
     public String toString() {
-        return sort + " - " + name;
+        return "[ sort=" + sort + ", name=" + name + ", shortName=" + shortName + " ]";
     }
 }

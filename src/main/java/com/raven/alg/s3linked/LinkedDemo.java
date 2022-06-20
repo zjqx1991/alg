@@ -3,7 +3,41 @@ package com.raven.alg.s3linked;
 
 public class LinkedDemo {
     public static void main(String[] args) {
-        singleLinked();
+        singleLinkedOrder();
+    }
+
+
+    /**
+     * 有序链表
+     */
+    private static void singleLinkedOrder() {
+        SingleLinkedOrder singleLinked = new SingleLinkedOrder(0, "", "");
+
+        SingleLinkedOrder singleLinked1 = new SingleLinkedOrder(1, "影魔", "SF");
+        SingleLinkedOrder singleLinked2 = new SingleLinkedOrder(2, "狙击手", "火枪");
+        SingleLinkedOrder singleLinked3 = new SingleLinkedOrder(3, "露娜", "月骑");
+        SingleLinkedOrder singleLinked4 = new SingleLinkedOrder(4, "卓尔游侠", "小黑");
+
+        singleLinked.add(singleLinked3);
+        singleLinked.add(singleLinked2);
+        singleLinked.add(singleLinked1);
+        singleLinked.add(singleLinked4);
+
+        singleLinked.list();
+        System.out.println("删除数据=====");
+        singleLinked.delete(1);
+        singleLinked.delete(5);
+        singleLinked.list();
+
+        System.out.println("更新数据=====");
+        SingleLinkedOrder singleLinked5 = new SingleLinkedOrder(2, "新手第一英雄", "矮子");
+        singleLinked.update(singleLinked5);
+        singleLinked.list();
+
+        System.out.println("查询数据=====");
+        singleLinked.get(1);
+        singleLinked.get(3);
+        singleLinked.get(5);
     }
 
     /**
@@ -14,7 +48,7 @@ public class LinkedDemo {
 
         SingleLinked singleLinked1 = new SingleLinked(1, "影魔", "SF");
         SingleLinked singleLinked2 = new SingleLinked(2, "狙击手", "火枪");
-        SingleLinked singleLinked3 = new SingleLinked(3, "露娜","月骑");
+        SingleLinked singleLinked3 = new SingleLinked(3, "露娜", "月骑");
         SingleLinked singleLinked4 = new SingleLinked(4, "卓尔游侠", "小黑");
 
         singleLinked.add2(singleLinked3);
