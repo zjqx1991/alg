@@ -27,6 +27,10 @@ public class LinkedDemo {
         singleLinked.list();
 
         System.out.println("===== 删除 ====");
+        singleLinked.delete(1);
+        singleLinked.list();
+
+        System.out.println("===== 删除 ====");
         singleLinked.delete(4);
         singleLinked.list();
 

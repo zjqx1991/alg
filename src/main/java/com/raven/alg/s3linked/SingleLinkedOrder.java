@@ -41,16 +41,8 @@ public class SingleLinkedOrder {
     public void delete(Integer index) {
         SingleLinkedOrder head = this.head;
         while (null != head.next) {
-            SingleLinkedOrder next1 = head.next;
-            SingleLinkedOrder next2 = head.next.next;
-            // 取出当前节点
-            if (null != next1 && next1.sort == index) {
-                if (null == next2) {
-                    head.next = next2;
-                    return;
-                }
-                head.next.name = head.next.next.name;
-                head.next.sort = head.next.next.sort;
+            if (null != head.next && head.next.sort == index) {
+                head.next = head.next.next;
                 return;
             }
             head = head.next;
