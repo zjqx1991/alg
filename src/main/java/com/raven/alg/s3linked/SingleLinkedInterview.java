@@ -1,9 +1,33 @@
 package com.raven.alg.s3linked;
 
+import java.util.Stack;
+
 /**
  * 单向链表面试题
  */
 public class SingleLinkedInterview {
+
+
+    /**
+     * 反转单向链表(不破坏原链表)
+     */
+    public static void reservePrintLinked(Linked linked) {
+        Stack<Linked> stack = new Stack<Linked>();
+        Linked head = linked;
+        while (true) {
+            if (null == head) {
+                break;
+            }
+            if (head.sort > 0) {
+                stack.add(head);
+            }
+            head = head.next;
+        }
+
+        while (stack.size() > 0) {
+            System.out.println(stack.pop());
+        }
+    }
 
 
     /**

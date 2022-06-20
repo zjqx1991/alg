@@ -25,6 +25,9 @@ public class LinkedDemo {
 
         singleLinked.list();
 
+        System.out.println("倒序输出链表");
+        SingleLinkedInterview.reservePrintLinked(singleLinked.head);
+
 //        System.out.println("反转链表");
 //        Linked linked = SingleLinkedInterview.reserveLinked(singleLinked.head);
 //        while (true) {
@@ -36,9 +39,9 @@ public class LinkedDemo {
 //            linked = linked.next;
 //        }
 
-        System.out.println("反转链表2");
-        SingleLinkedInterview.reserveLinked2(singleLinked.head);
-        singleLinked.list();
+//        System.out.println("反转链表2");
+//        SingleLinkedInterview.reserveLinked2(singleLinked.head);
+//        singleLinked.list();
 
 //
 //        System.out.println("获取倒数第5个数据=====" + SingleLinkedInterview.getLinkedByReverseIndex(singleLinked.head, 5));
