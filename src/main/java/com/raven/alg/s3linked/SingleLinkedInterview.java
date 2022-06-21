@@ -11,6 +11,55 @@ public class SingleLinkedInterview {
     /**
      * 反转单向链表(不破坏原链表)
      */
+    public static Linked mergeLinked(Linked linked1, Linked linked2) {
+        // 新建一个头
+        Linked newLinked = new Linked();
+        Linked head = linked1;
+        Linked head2 = linked2;
+        Linked next = null;
+
+        // 拷贝 linked1 中数据到 newLinked
+        while (null != head) {
+            next = head.next;
+            if (head.sort > 0) {
+                Linked temp = newLinked;
+                while (temp.next != null) {
+                    temp = temp.next;
+                }
+                head.next = temp.next;
+                temp.next = head;
+            }
+            head = next;
+        }
+
+        // 添加 linked2 中数据到 newLinked
+        while (null != head2) {
+            next = head2.next;
+            if (head2.sort > 0) {
+                Linked temp2 = newLinked;
+                while (temp2.next != null) {
+                    if (temp2.next.sort > head2.sort) {
+                        break;
+                    }
+                    temp2 = temp2.next;
+                }
+                Linked linked = new Linked();
+                linked.sort = head2.sort;
+                linked.name = head2.name;
+                linked.shortName = head2.shortName;
+                linked.next = temp2.next;
+                temp2.next = linked;
+            }
+            head2 = next;
+        }
+
+        return newLinked;
+    }
+
+
+    /**
+     * 反转单向链表(不破坏原链表)
+     */
     public static void reservePrintLinked(Linked linked) {
         Stack<Linked> stack = new Stack<Linked>();
         Linked head = linked;

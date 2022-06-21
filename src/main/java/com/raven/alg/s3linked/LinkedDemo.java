@@ -25,8 +25,21 @@ public class LinkedDemo {
 
         singleLinked.list();
 
-        System.out.println("倒序输出链表");
-        SingleLinkedInterview.reservePrintLinked(singleLinked.head);
+
+        System.out.println("合并两个有序链表");
+        Linked linked = SingleLinkedInterview.mergeLinked(singleLinked.head, singleLinked.head);
+        while (true) {
+            if (linked == null) {
+                break;
+            }
+            if (linked.sort != null)
+                System.out.println(linked);
+            linked = linked.next;
+        }
+
+
+//        System.out.println("倒序输出链表");
+//        SingleLinkedInterview.reservePrintLinked(singleLinked.head);
 
 //        System.out.println("反转链表");
 //        Linked linked = SingleLinkedInterview.reserveLinked(singleLinked.head);
