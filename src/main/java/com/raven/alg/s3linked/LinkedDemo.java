@@ -3,7 +3,47 @@ package com.raven.alg.s3linked;
 
 public class LinkedDemo {
     public static void main(String[] args) {
-        singleLinkedOrder();
+        doubleLinkedTest();
+    }
+
+
+    /**
+     * 无序双向链表
+     */
+    private static void doubleLinkedTest() {
+        DoubleLinkedNoOrder dh = new DoubleLinkedNoOrder(0, "", "");
+
+        DoubleLinkedNoOrder d1 = new DoubleLinkedNoOrder(1, "影魔", "SF");
+        DoubleLinkedNoOrder d2 = new DoubleLinkedNoOrder(2, "狙击手", "火枪");
+        DoubleLinkedNoOrder d3 = new DoubleLinkedNoOrder(3, "露娜", "月骑");
+        DoubleLinkedNoOrder d4 = new DoubleLinkedNoOrder(4, "卓尔游侠", "小黑");
+
+        dh.add(d1);
+        dh.add(d2);
+        dh.add(d3);
+        dh.add(d4);
+        dh.list();
+
+
+//        System.out.println("======= 删除 ======");
+//        System.out.println("======= 删除 ======" + dh.delete(1));
+//        dh.list();
+//        System.out.println("======= 删除 ======" + dh.delete(4));
+//        dh.list();
+//        System.out.println("======= 删除 ======" + dh.delete(5));
+
+//
+//        System.out.println("======= 修改 ======");
+//        DoubleLinkedNoOrder d5 = new DoubleLinkedNoOrder(3, "露娜~5", "月骑~5");
+//        System.out.println("======= 修改 5 ======" + dh.update(d5));
+//        dh.list();
+
+
+        System.out.println("======= 获取 ======");
+        System.out.println("======= 修改 5 ======" + dh.get(5));
+        System.out.println("======= 修改 4 ======" + dh.get(4));
+        dh.list();
+
     }
 
 
