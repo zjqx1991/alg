@@ -3,7 +3,17 @@ package com.raven.alg.s3linked;
 
 public class LinkedDemo {
     public static void main(String[] args) {
-        doubleLinkedTest();
+        josephTest();
+    }
+
+
+    /**
+     * 约瑟夫问题
+     */
+    private static void josephTest() {
+        Joseph joseph = new Joseph(3);
+        joseph.list();
+        joseph.run(3, 3);
     }
 
 
@@ -43,7 +53,6 @@ public class LinkedDemo {
         System.out.println("======= 修改 5 ======" + dh.get(5));
         System.out.println("======= 修改 4 ======" + dh.get(4));
         dh.list();
-
     }
 
 
