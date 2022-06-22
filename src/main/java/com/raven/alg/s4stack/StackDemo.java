@@ -1,11 +1,18 @@
 package com.raven.alg.s4stack;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class StackDemo {
 
     public static void main(String[] args) {
-        stackLinkedTest();
+        // "(123+456)*567-6678"
+        List<String> list = PolandNotation.parsePoland("(3+4)*5-6");
+        System.out.println("args = " + list.toString());
+        Integer res = PolandNotation.calculatorPoland(list);
+        System.out.println("args = " + res);
+
+//        stackLinkedTest();
     }
 
 
