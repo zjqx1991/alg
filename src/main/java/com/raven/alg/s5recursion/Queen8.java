@@ -1,8 +1,5 @@
 package com.raven.alg.s5recursion;
 
-
-import java.util.Arrays;
-
 /**
  * 8 皇后问题
  * 思路：
@@ -20,8 +17,6 @@ public class Queen8 {
     private static Boolean isHS = false;
     private static Boolean isFinish = false;
     private static Integer count = 0;
-
-    private static int[] total = new int[8];
 
     public static void run(Integer size) {
         if (size < 1) {
@@ -56,20 +51,17 @@ public class Queen8 {
 
         // 从 0 ~ 7
         for (int i = 0; i < mg.length; i++) {
-            if (isHS) {
+            // 处理回溯
+            if (isHS || isFinish) {
                 isHS = false;
-                // 处理回溯
-                hs(mg, startX);
-//                mg[startX][i - 1] = 2;
+                recall(mg, startX);
             }
-//            System.out.println("开始摆放第 " + (startX + 1) + " 个皇后, 第 " + (i + 1) + " 次");
             // 完成时进行下一遍是需要把当前回溯
             if (isFinish) {
                 isFinish = false;
-                hs(mg, startX);
+                recall(mg, startX);
             }
             mg[startX][i] = 1;
-//            print(mg);
             if (SUCCESS == check(mg, startX, i)) {
                 go(mg, startX + 1);
             } else {
@@ -116,7 +108,7 @@ public class Queen8 {
      * @param startX
      * @return
      */
-    private static void hs(int[][] mg, int startX) {
+    private static void recall(int[][] mg, int startX) {
         for (int i = startX; i < mg.length; i++) {
             for (int j = 0; j < mg.length; j++) {
                 if (1 == mg[i][j]) {

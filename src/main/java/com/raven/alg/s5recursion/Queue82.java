@@ -2,59 +2,52 @@ package com.raven.alg.s5recursion;
 
 public class Queue82 {
 
-	//����һ��max��ʾ���ж��ٸ��ʺ�
+	//数组大小
 	int max = 8;
-	//��������array, ����ʺ����λ�õĽ��,���� arr = {0 , 4, 7, 5, 2, 6, 1, 3}
+	// arr = {0 , 4, 7, 5, 2, 6, 1, 3}
 	int[] array = new int[max];
 	static int count = 0;
 	static int judgeCount = 0;
 	public static void main(String[] args) {
-		//����һ�� �� 8�ʺ��Ƿ���ȷ
 		Queue82 queue8 = new Queue82();
 		queue8.check(0);
-		System.out.printf("һ����%d�ⷨ", count);
-		System.out.printf("һ���жϳ�ͻ�Ĵ���%d��", judgeCount); // 1.5w
-
+		System.out.printf("共有%d种ⷨ", count);
+		System.out.printf("共回溯%d次", judgeCount); // 1.5w
+		System.out.println();
 	}
 
 
 
-	//��дһ�����������õ�n���ʺ�
-	//�ر�ע�⣺ check �� ÿһ�εݹ�ʱ�����뵽check�ж���  for(int i = 0; i < max; i++)����˻��л���
 	private void check(int n) {
-		if(n == max) {  //n = 8 , ��ʵ8���ʺ�ͼ�Ȼ�ź�
+		if(n == max) {  //n = 8 代表防止成功
 			print();
 			return;
 		}
 
-		//���η���ʺ󣬲��ж��Ƿ��ͻ
+		//表示每个皇后都是从0列开始
 		for(int i = 0; i < max; i++) {
-			//�Ȱѵ�ǰ����ʺ� n , �ŵ����еĵ�1��
+			//第n+1个皇后防止在第i+1列表
 			array[n] = i;
-			//�жϵ����õ�n���ʺ�i��ʱ���Ƿ��ͻ
-			if(judge(n)) { // ����ͻ
-				//���ŷ�n+1���ʺ�,����ʼ�ݹ�
-				check(n+1); //
+			//判断是否可以放置皇后在n+1位置
+			if(judge(n)) {
+				// 防止下一行
+				check(n+1);
 			}
-			//�����ͻ���ͼ���ִ�� array[n] = i; ������n���ʺ󣬷����ڱ��е� ���Ƶ�һ��λ��
 		}
 	}
 
-	//�鿴�����Ƿ��õ�n���ʺ�, ��ȥ���ûʺ��Ƿ��ǰ���Ѿ��ڷŵĻʺ��ͻ
 	/**
-	 *
-	 * @param n ��ʾ��n���ʺ�
+	 *	判断是否可以放置皇后
+	 * @param n
 	 * @return
 	 */
 	private boolean judge(int n) {
 		judgeCount++;
 		for(int i = 0; i < n; i++) {
-			// ˵��
-			//1. array[i] == array[n]  ��ʾ�ж� ��n���ʺ��Ƿ��ǰ���n-1���ʺ���ͬһ��
-			//2. Math.abs(n-i) == Math.abs(array[n] - array[i]) ��ʾ�жϵ�n���ʺ��Ƿ�͵�i�ʺ��Ƿ���ͬһб��
+			//1. array[i] == array[n]  表示在同一列
+			//2. Math.abs(n-i) == Math.abs(array[n] - array[i]) 表示在一个斜线上
 			// n = 1  ���õ� 2�� 1 n = 1 array[1] = 1
 			// Math.abs(1-0) == 1  Math.abs(array[n] - array[i]) = Math.abs(1-0) = 1
-			//3. �ж��Ƿ���ͬһ��, û�б�Ҫ��n ÿ�ζ��ڵ���
 			if(array[i] == array[n] || Math.abs(n-i) == Math.abs(array[n] - array[i]) ) {
 				return false;
 			}
@@ -62,7 +55,7 @@ public class Queue82 {
 		return true;
 	}
 
-	//дһ�����������Խ��ʺ�ڷŵ�λ�����
+	//输出
 	private void print() {
 		count++;
 		for (int i = 0; i < array.length; i++) {
