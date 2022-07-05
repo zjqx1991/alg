@@ -1,6 +1,8 @@
 package com.raven.alg.s5recursion;
 
 
+import java.util.Arrays;
+
 /**
  * 8 皇后问题
  * 思路：
@@ -16,7 +18,10 @@ public class Queen8 {
     private final static Integer HS = 3;
 
     private static Boolean isHS = false;
+    private static Boolean isFinish = false;
     private static Integer count = 0;
+
+    private static int[] total = new int[8];
 
     public static void run(Integer size) {
         if (size < 1) {
@@ -41,7 +46,11 @@ public class Queen8 {
         if (startX == mg.length) {
             count++;
             System.out.println("已完成第 " + count + " 次");
+            print2(mg);
+
             print(mg);
+            isFinish = true;
+            System.out.println();
             return;
         }
 
@@ -51,10 +60,15 @@ public class Queen8 {
                 isHS = false;
                 // 处理回溯
                 hs(mg, startX);
-                mg[startX][i - 1] = 2;
+//                mg[startX][i - 1] = 2;
+            }
+//            System.out.println("开始摆放第 " + (startX + 1) + " 个皇后, 第 " + (i + 1) + " 次");
+            // 完成时进行下一遍是需要把当前回溯
+            if (isFinish) {
+                isFinish = false;
+                hs(mg, startX);
             }
             mg[startX][i] = 1;
-//            System.out.println("开始摆放第 " + (startX + 1) + " 个皇后, 第 " + (i + 1) + " 次");
 //            print(mg);
             if (SUCCESS == check(mg, startX, i)) {
                 go(mg, startX + 1);
@@ -103,7 +117,7 @@ public class Queen8 {
      * @return
      */
     private static void hs(int[][] mg, int startX) {
-        for (int i = mg.length - 1; i > startX; i--) {
+        for (int i = startX; i < mg.length; i++) {
             for (int j = 0; j < mg.length; j++) {
                 if (1 == mg[i][j]) {
                     mg[i][j] = HS;
@@ -118,7 +132,24 @@ public class Queen8 {
      *
      * @param mg
      */
+    private static void print2(int[][] mg) {
+        for (int i = 0; i < mg.length; i++) {
+            for (int j = 0; j < mg.length; j++) {
+                if (1 == mg[i][j]) {
+                    System.out.print(j + "   ");
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    /**
+     * 打印
+     *
+     * @param mg
+     */
     private static void print(int[][] mg) {
+        System.out.println("已完成第 " + count + " 次8皇后图：");
         for (int i = 0; i < mg.length; i++) {
             for (int j = 0; j < mg.length; j++) {
                 System.out.print(mg[i][j] + "   ");
