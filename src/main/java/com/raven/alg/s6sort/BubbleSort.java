@@ -17,6 +17,7 @@ public class BubbleSort {
     public static void main(String[] args) {
 
 //        Integer[] arr = {3, 1, 5, 2, -2};
+//        Integer[] arr = {1, 2, 3, 4, 6};
 //        Integer[] sort = sort(arr);
 //        System.out.println(Arrays.toString(sort));
 
@@ -24,13 +25,15 @@ public class BubbleSort {
         Integer[] arr = new Integer[100000];
         Random random = new Random();
         for (int i = 0; i < 100000; i++) {
-            arr[i] = random.nextInt(80000) * 100000;
+            arr[i] = random.nextInt(80000);
         }
         long startTime = System.currentTimeMillis();
         sort(arr);
         long endTime = System.currentTimeMillis();
 
-        System.out.println("排序10万个数据耗时 = " + (endTime - startTime));//排序10万个数据耗时 = 46334 49523 52203 40252
+        //排序10万个数据耗时 = 46334 49523 52203 40252
+        //优惠后排序10万个数据耗时 = 43635 41963 41150
+        System.out.println("排序10万个数据耗时 = " + (endTime - startTime));
 
     }
 
@@ -48,6 +51,8 @@ public class BubbleSort {
 
         // 临时
         Integer tmp = 0;
+        // 优化
+        Boolean isChange = false;
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 // 如果 arr[j] 大于 arr[j + 1]，则交换 j 和 j+1 位置的值
@@ -55,9 +60,16 @@ public class BubbleSort {
                     tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;
+                    isChange = true;
                 }
             }
-//            System.out.println("第 " + (i + 1) + " 次的排序" + Arrays.toString(arr));
+//            System.out.println("第 "+(i + 1)+" 趟排序后 "+Arrays.toString(arr));
+            // 如果没有某一趟没有发生交换，则代表已经排序完成
+            if (isChange) {
+                isChange = false;
+            } else {
+                break;
+            }
         }
 
         return arr;
