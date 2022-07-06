@@ -33,6 +33,7 @@ public class SelectSort {
         //冒泡排序10万个数据耗时 = 46334 49523 52203 40252
         //优化冒泡排序10万个数据耗时 = 43635 41963 41150
         //选择排序10万个数据耗时 = 13355 16778 13461
+        //优化选择排序10万个数据耗时 = 18096 18548 15211 15897
         System.out.println("排序10万个数据耗时 = " + (endTime - startTime));
     }
 
@@ -48,16 +49,18 @@ public class SelectSort {
         for (int i = 0; i < arr.length - 1; i++) {
             // 默认第一个元素为最小
             index = i;
-            for (int j = i + 1; j < arr.length - 1; j++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 if (arr[index] > arr[j]) {
                     // 记录最小值的下标
-                    index = j + 1;
+                    index = j;
                 }
             }
             // 比较后交换位置
-            tmp = arr[i];
-            arr[i] = arr[index];
-            arr[index] = tmp;
+            if (index != i) {
+                tmp = arr[i];
+                arr[i] = arr[index];
+                arr[index] = tmp;
+            }
 //            System.out.println("第 " + (i + 1) + " 次交换后" + Arrays.toString(arr));
         }
         return arr;
